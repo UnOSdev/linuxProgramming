@@ -28,6 +28,20 @@ enum ANSI_CHARS {
 };
 
 int main(int argc, char** argv, char** envp){
+    unsigned index = 0;
+    int response = 0;
+RESTART:
+    index = 0;
+    while (envp[index] != NULL)
+    {
+        printf("%s\n", envp[index++]);
+    }
     
+    printf("Wish to fork?(1/0): ");
+    scanf("%i", &response);
+    if(response){
+        fork();
+        goto RESTART;
+    }
     return 0;
 }
